@@ -8,7 +8,7 @@ const initialValues = {
     email: "",
     password: "",
 }
-const errorMessages = {
+export const errorMessages = {
     ad: "Adınız en z 3 karakter olmalıdır",
     soyad: "Soyadınız en az 3 karakter olmalıdır",
     email: "Geçerli bir email adresi giriniz",
@@ -177,7 +177,7 @@ export default function Register() {
   </Button>
 </Form>
 </CardBody>
-<CardFooter>ID: {id}</CardFooter>
+{id && <CardFooter data-cy="response-message">ID: {id}</CardFooter>}
 </Card>
     )
 }
