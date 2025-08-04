@@ -15,9 +15,10 @@ export const errorMessages = {
     password: "En az 8 karakter, en az 1 büyük harf, en az 1 küçük harf, en az 1 sembol ve en az 1 rakam içermelidir;"
 };
 
-const [id, SetID] = useState("");
+  
 
 export default function Register() {
+    const [id, setID] = useState('');
     const [formData, setFormData] = useState(initialValues);
     const [errors, setErrors] = useState({
         ad: false,
@@ -82,7 +83,7 @@ export default function Register() {
         if(!isValid) return;
         axios.post("https://regres.in/api/users", formData)
         .then(response=>{
-            SetID(response.data.id);
+            setID(response.data.id);
             setFormData(initialValues);
         })
         .catch(error=>{
@@ -90,7 +91,7 @@ export default function Register() {
         })
     }
 
-    return(
+    return (
     <Card>
         <CardHeader>Kayıt</CardHeader>
         <CardBody>
@@ -112,9 +113,7 @@ export default function Register() {
     {errors.ad && <FormFeedback data-cy="error-message">
       {errorMessages.ad}
     </FormFeedback>}
-    <FormFeedback>
-      Oh noes! that name is already taken
-    </FormFeedback>
+  
   </FormGroup>
     <FormGroup>
     <Label for="soyad">
@@ -172,7 +171,7 @@ export default function Register() {
   </FormGroup>
 
   <Button disabled={!isValid}
-  data-cy="submit-buton">
+  data-cy="submit-button">
     Kayıt Ol
   </Button>
 </Form>
